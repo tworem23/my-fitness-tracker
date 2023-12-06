@@ -6,11 +6,9 @@
   </head>
   <body>
     <nav>
-        <a href="/workouts" <%- title === 'All Movies' ? 'class="active"' : '' %>WORKOUTS</a>
-        <% if (user) { %>
-          <a href="/exercises/new"	<%- title === 'Add Excercise' ? 'class="active"' : '' %>>
-              ADD EXERCISE</a>
-          <a href="/workouts/new" <%- title === 'Add Workout' ? 'class="active"' : '' %>>ADD WORKOUT</a>
+      <a href="/workouts" <%- title === 'All Workouts' ? 'class="active"' : '' %>>WORKOUTS</a> |
+      <% if (user) { %>
+          <a href="/workouts/new" <%- title === 'Create New Workout' ? 'class="active"' : '' %>>ADD WORKOUT</a> |
           <a href="/logout">LOG OUT</a>
         <% } else { %>
           <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
