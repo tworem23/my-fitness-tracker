@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.redirect('/workouts');
 });
 
 router.get('/auth/google', passport.authenticate(
@@ -24,7 +24,7 @@ router.get('/oauth2callback', passport.authenticate(
 
 router.get('/logout', function(req, res){
   req.logout(function() {
-    res.redirect('/movies');
+    res.redirect('/workouts');
   });
 });
 

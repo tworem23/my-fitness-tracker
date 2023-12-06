@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+
+<table id="list">
+    <thead>
+        <tr>
+            <th>Workout</th>
+            <th>Excercises</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% workouts.forEach(function(workout) { %>
+            <tr>
+                <th><%= workout.name %></th>
+                <th><a href="workouts/<%= workout._id %>">Details</a></th>            
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- include('../partials/footer') %>
