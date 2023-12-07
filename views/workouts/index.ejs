@@ -7,7 +7,7 @@
         </tr>
     </thead>
     <tbody>
-        <% workouts.forEach(function(workout) { %>
+        <% workout.forEach(function(workout) { %>
             <tr>
                 <th><%= workout.name %></th>
                 <th><a href="workouts/<%= workout._id %>">Details</a></th>          

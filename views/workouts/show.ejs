@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+
+
+<% if (workout.exercises.length) { %>
+    <table>
+        <thead>
+            <tr>
+                <th><b>Exercise:</b></th>
+                <th><b>Sets:</b></th>
+                <th><b>Reps:</b></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% workout.exercises.forEach(function(exercise) { %>
+                <tr>
+                    <td><%= exercise.name %></td>
+                    <td><%= exercise.sets %></td>
+                    <td><%= exercise.reps %></td>
+                </tr>
+          <% }) %> 
+        </tbody>
+    </table>
+<% } %>
+
+
+<form id="add-exercise-form" action="/workouts/<%= workout._id %>/exercises"
+    method="POST">
+    <label><b>Name:</b></label>
+    <input type="text" name="name"></input>
+    <label><b>Sets:</b></label>
+    <input type="text" name="sets"></input>
+    <label><b>Reps:</b></label>
+    <input type="text" name="reps"></input>
+    <button type="submit">Add Exercise</button>
+</form>
+
+
+<% if (user?._id.equals(workout.user)) { %>
+    <form action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete Workout</button>
+    </form>
+<% } %>
+
+<%- include('../partials/footer') %>

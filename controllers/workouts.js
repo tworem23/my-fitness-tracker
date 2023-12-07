@@ -1,19 +1,26 @@
 const Workout = require('../models/workout')
 
+
 module.exports = {
     index,
     show,
     create,
-    new: newWorkout
+    new: newWorkout,
+    delete: deleteWorkout
 }
 
 async function index(req, res) {
-    const workouts = await Workout.find({})
-    res.render('workouts/index', { title: 'Workouts', workouts })
+    const workout = await Workout.find({})
+    res.render('workouts/index', { title: 'Workouts', workout })
 }
 
 async function show(req, res) {
-    const workout = await Workout.findById(req.params.id).populate('exercises')
+    const workout = await Workout.findById(req.params.id)
+    res.render('workouts/show', {
+        title: `${workout.name}`,
+        workout
+    })
+
 }
 
 function newWorkout(req, res) {
@@ -36,4 +43,9 @@ async function create(req, res) {
         console.log(err)
         res.render('workouts/new', { errorMsg: err.message })
     }
+}
+
+async function deleteWorkout(req, res) {
+    await Workout.findByIdAndDelete(req.params.id)
+    res.redirect('/workouts')
 }
