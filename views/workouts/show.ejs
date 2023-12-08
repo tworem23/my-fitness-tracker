@@ -8,6 +8,7 @@
                 <th><b>Exercise:</b></th>
                 <th><b>Sets:</b></th>
                 <th><b>Reps:</b></th>
+                <th><b>Weight:</b></th>
                 <th></th>
             </tr>
         </thead>
@@ -17,6 +18,7 @@
                     <td><%= exercise.name %></td>
                     <td><%= exercise.sets %></td>
                     <td><%= exercise.reps %></td>
+                    <td><%= exercise.weight %></td>
                     <% if (user?._id.equals(workout.user)) { %>
                         <td><a href="/exercises/<%= exercise._id %>/edit">Edit</a></td>
                     <% } %>
@@ -26,18 +28,25 @@
     </table>
 <% } %>
 
+<% if (user?._id.equals(workout.user)) { %>
+    <form id="add-exercise-form" action="/workouts/<%= workout._id %>/exercises"
+        method="POST">
+        <label><b>Name:</b></label>
+        <input type="text" name="name"></input>
+        <label><b>Sets:</b></label>
+        <input type="text" name="sets"></input>
+        <label><b>Reps:</b></label>
+        <input type="text" name="reps"></input>
+        <label><b>Weight:</b></label>
+        <input type="text" name="weight"></input>
+        <button type="submit">Add Exercise</button>
+    </form>
+<% } %>
 
-<form id="add-exercise-form" action="/workouts/<%= workout._id %>/exercises"
-    method="POST">
-    <label><b>Name:</b></label>
-    <input type="text" name="name"></input>
-    <label><b>Sets:</b></label>
-    <input type="text" name="sets"></input>
-    <label><b>Reps:</b></label>
-    <input type="text" name="reps"></input>
-    <button type="submit">Add Exercise</button>
-</form>
-
+<div class="review-user">
+    <img alt="avatar" src="<%= workout.userAvatar %>" referrerpolicy="no-referrer" >
+    <%= workout.userName %>
+</div>
 
 <% if (user?._id.equals(workout.user)) { %>
     <form action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">

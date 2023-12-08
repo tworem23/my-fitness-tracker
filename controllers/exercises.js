@@ -8,7 +8,7 @@ module.exports = {
 }
 
 async function create(req, res) {
-    const workout = await Workout.findById(req.params.id);
+    const workout = await Workout.findById(req.params.id, {user: req.user._id});
     workout.exercises.push(req.body);
     try {
         await workout.save();

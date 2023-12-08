@@ -3,7 +3,7 @@ const router = express.Router();
 const exercisesCtrl = require('../controllers/exercises');
 const ensureLoggedIn = require('../config/ensureLoggedIn');
 
-router.post('/workouts/:id/exercises', exercisesCtrl.create);
+router.post('/workouts/:id/exercises', ensureLoggedIn, exercisesCtrl.create);
 
 router.get('/exercises/:id/edit', ensureLoggedIn, exercisesCtrl.edit);
 
