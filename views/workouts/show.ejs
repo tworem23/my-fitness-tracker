@@ -17,7 +17,9 @@
                     <td><%= exercise.name %></td>
                     <td><%= exercise.sets %></td>
                     <td><%= exercise.reps %></td>
-                    <td><a href="/exercises/<%= exercise.name %>/edit">Edit</a></td>
+                    <% if (user?._id.equals(workout.user)) { %>
+                        <td><a href="/exercises/<%= exercise._id %>/edit">Edit</a></td>
+                    <% } %>
                 </tr>
           <% }) %> 
         </tbody>

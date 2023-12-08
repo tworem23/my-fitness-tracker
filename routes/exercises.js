@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const exercisesCtrl = require('../controllers/exercises')
+const exercisesCtrl = require('../controllers/exercises');
+const ensureLoggedIn = require('../config/ensureLoggedIn');
 
 router.post('/workouts/:id/exercises', exercisesCtrl.create);
 
-router.get('/exercises/:name/edit', exercisesCtrl.edit);
+router.get('/exercises/:id/edit', ensureLoggedIn, exercisesCtrl.edit);
 
-// router.put('/exercises/:id', exercisesCtrl.update);
+router.put('/exercises/:id', ensureLoggedIn, exercisesCtrl.update);
 
 module.exports = router;

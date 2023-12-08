@@ -1,12 +1,12 @@
 <%- include('../partials/header') %>
 
-<form action="/exercises/<%= exercise.name %>?_method=PUT" method="POST" autocomplete="off">
+<form action="/exercises/<%= exercise._id %>?_method=PUT" method="POST" autocomplete="off">
     <label><b>Name:</b></label>
-    <input type="text" name="name"></input>
+    <input type="text" name="name" value="<%= exercise.name %>">
     <label><b>Sets:</b></label>
-    <input type="text" name="sets"></input>
+    <input type="text" name="sets" value="<%= exercise.sets %>">
     <label><b>Reps:</b></label>
-    <input type="text" name="reps"></input>
+    <input type="text" name="reps" value="<%= exercise.reps %>">
     <button type="submit">Update Exercise</button>
 </form>
 
