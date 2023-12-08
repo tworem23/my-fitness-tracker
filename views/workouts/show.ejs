@@ -8,6 +8,7 @@
                 <th><b>Exercise:</b></th>
                 <th><b>Sets:</b></th>
                 <th><b>Reps:</b></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -16,6 +17,7 @@
                     <td><%= exercise.name %></td>
                     <td><%= exercise.sets %></td>
                     <td><%= exercise.reps %></td>
+                    <td><a href="/exercises/<%= exercise.name %>/edit">Edit</a></td>
                 </tr>
           <% }) %> 
         </tbody>
