@@ -2,30 +2,32 @@
 
 
 <% if (workout.exercises.length) { %>
-    <table>
-        <thead>
-            <tr>
-                <th><b>Exercise:</b></th>
-                <th><b>Sets:</b></th>
-                <th><b>Reps:</b></th>
-                <th><b>Weight:</b></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% workout.exercises.forEach(function(exercise) { %>
+    <section id="show-page">
+        <table>
+            <thead>
                 <tr>
-                    <td><%= exercise.name %></td>
-                    <td><%= exercise.sets %></td>
-                    <td><%= exercise.reps %></td>
-                    <td><%= exercise.weight %></td>
-                    <% if (user?._id.equals(workout.user)) { %>
-                        <td><a href="/exercises/<%= exercise._id %>/edit">Edit</a></td>
-                    <% } %>
+                    <th><b>Exercise:</b></th>
+                    <th><b>Sets:</b></th>
+                    <th><b>Reps:</b></th>
+                    <th><b>Weight:</b></th>
+                    <th></th>
                 </tr>
-          <% }) %> 
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <% workout.exercises.forEach(function(exercise) { %>
+                    <tr>
+                        <td><%= exercise.name %></td>
+                        <td><%= exercise.sets %></td>
+                        <td><%= exercise.reps %></td>
+                        <td><%= exercise.weight %></td>
+                        <% if (user?._id.equals(workout.user)) { %>
+                            <td><a href="/exercises/<%= exercise._id %>/edit">Edit</a></td>
+                        <% } %>
+                    </tr>
+            <% }) %> 
+            </tbody>
+        </table>
+    </section>
 <% } %>
 
 <% if (user?._id.equals(workout.user)) { %>
@@ -39,17 +41,18 @@
         <input type="text" name="reps"></input>
         <label><b>Weight:</b></label>
         <input type="text" name="weight"></input>
+        <div></div>
         <button type="submit">Add Exercise</button>
     </form>
 <% } %>
 
-<div class="review-user">
+<div class="user">
     <img alt="avatar" src="<%= workout.userAvatar %>" referrerpolicy="no-referrer" >
     <%= workout.userName %>
 </div>
 
 <% if (user?._id.equals(workout.user)) { %>
-    <form action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
+    <form id="delete-workout" action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
         <button type="submit">Delete Workout</button>
     </form>
 <% } %>

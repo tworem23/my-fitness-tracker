@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<form action="/exercises/<%= exercise._id %>?_method=PUT" method="POST" autocomplete="off">
+<form id="edit-form" action="/exercises/<%= exercise._id %>?_method=PUT" method="POST" autocomplete="off">
     <label><b>Name:</b></label>
     <input type="text" name="name" value="<%= exercise.name %>">
     <label><b>Sets:</b></label>
@@ -9,6 +9,7 @@
     <input type="text" name="reps" value="<%= exercise.reps %>">
     <label><b>Weight:</b></label>
     <input type="text" name="weight" value="<%= exercise.weight %>">
+    <div></div>
     <button type="submit">Update Exercise</button>
 </form>
 
